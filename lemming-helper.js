@@ -1,5 +1,5 @@
 onmessage = function (msg) {
-  console.log(msg);
-  var fnResult = msg.data();
+  var func = eval( '(' + msg.data + ')' );
+  var fnResult = func();
   postMessage(fnResult);
 };
