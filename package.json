@@ -1,6 +1,6 @@
 {
   "name": "lemmings",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Experimental promise based web workers wrapper",
   "main": "lemmings.js",
   "scripts": {
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/arafeek/lemmings/issues"
   },
-  "homepage": "https://github.com/arafeek/lemmings"
+  "homepage": "https://github.com/arafeek/lemmings",
+  "dependencies": {
+    "ramda": "^0.17.1"
+  }
 }

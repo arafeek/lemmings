@@ -15,18 +15,27 @@
     return;
   }
 
+  var R = window.R;
+
   var lemming = {
     Task: Task
   };
 
-  function Task(fn) {
+  function Task(fn, args, context) {
 
     if (typeof fn === 'function') {
-      // Stringify the function
-      var fnMessage = fn.toString();
+      // The object that will be passed to the worker script
+      var workerOptions = {};
 
       var worker = new Worker('lemming-helper.js');
-      worker.postMessage(fnMessage);
+      // Stringify the function
+      workerOptions.func = fn.toString();
+      // TODO: do some typechecking here 
+      workerOptions.args = args;
+      workerOptions.context = context;
+
+
+      worker.postMessage(JSON.stringify(workerOptions));
 
       return new Promise(function (resolve, reject) {
         worker.onmessage = function (result) {
